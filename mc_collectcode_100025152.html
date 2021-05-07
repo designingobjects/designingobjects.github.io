@@ -28,11 +28,12 @@
 		    _etmc.push(["trackPageView"]);
 		}
 
-		function trackBaseCleanURL() {
+		function trackBaseCleanThisURL() {
 		    _etmc.push(["setOrgId", "100025152"]);
 		    var thisURL = window.location.origin + window.location.pathname;
-		    thisURL = thisURL.slice(0, -1);    
-		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		    thisURL = thisURL.replace(/\/$/, "");  
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"url" : thisURL}]);
 		}	
 	</script>
     </body>
