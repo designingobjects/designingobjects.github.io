@@ -17,9 +17,8 @@
 	User Info: <input type="text" id='userInfo'/>
 	<br/>
 	<button onclick="trackUserInfo(document.getElementById('userInfo').value)">track userinfo</button>
-	<br/>
 	<button onclick="trackUserInfoAndCleanURL(document.getElementById('userInfo').value)">track userinfo + clean url</button>
-        
+        <button onclick="trackUserInfoAndCleanItemURL(document.getElementById('userInfo').value)">track userinfo + item (url)</button>
 	<br/><br/>
 	    
 	<button onclick="trackBaseCleanThisURL()">trackItem</button>
@@ -55,6 +54,16 @@
 		    thisURL = thisURL.replace(/\/$/, ""); 
                     console.log('track url: '+thisURL);
 		    _etmc.push(["trackPageView", {"url" : thisURL}]);
+		}
+		
+		function trackUserInfoAndCleanItemURL(userInfo) {
+		    _etmc.push(["setOrgId", "100025152"]);
+		    console.log('set userinfo: '+userInfo);
+	            _etmc.push(["setUserInfo", {"email": userInfo}]);
+		    var thisURL = window.location.origin + window.location.pathname;
+		    thisURL = thisURL.replace(/\/$/, ""); 
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
 		}
 	</script>
     </body>
