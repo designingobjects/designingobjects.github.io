@@ -1,7 +1,7 @@
 <html>
     <head>
-        <!--<script type="text/javascript" src="//100025152.collect.igodigital.com/collect.js"></script>-->
-	<script type="text/javascript" src="//500008576.collect.igodigital.com/collect.js"></script>
+        <script type="text/javascript" src="//100025152.collect.igodigital.com/collect.js"></script>
+	<--<script type="text/javascript" src="//500008576.collect.igodigital.com/collect.js"></script>-->
     </head>
 
     <body>
@@ -27,30 +27,30 @@
             
 		
             function trackBase() {
-                //_etmc.push(["setOrgId", "100025152"]); // demo
-                _etmc.push(["setOrgId", "500008576"]); // test
+                _etmc.push(["setOrgId", "100025152"]); // demo
+                //_etmc.push(["setOrgId", "500008576"]); // test
                 _etmc.push(["trackPageView"]);
 	    }
             
             function trackEmail() {
-                //_etmc.push(["setOrgId", "100025152"]); // demo
-                _etmc.push(["setOrgId", "500008576"]); // test
+                _etmc.push(["setOrgId", "100025152"]); // demo
+                //_etmc.push(["setOrgId", "500008576"]); // test
                 //_etmc.push(["setUserInfo", {"email": "0031K00002dIOe7QAG"}]); // demo
 		_etmc.push(["setUserInfo", {"email": "00Q7E00000DEPc1UAH"}]); // test    
                 _etmc.push(["trackPageView"]);
 	    }
             
             function trackItem() {
-                //_etmc.push(["setOrgId", "100025152"]); // demo
-                _etmc.push(["setOrgId", "500008576"]); // test
+                _etmc.push(["setOrgId", "100025152"]); // demo
+                //_etmc.push(["setOrgId", "500008576"]); // test
                 var thisURL = window.location.origin + window.location.pathname;
 		thisURL = thisURL.slice(0, -1);    
                 _etmc.push(["trackPageView", {"item" : thisURL}]);
 	    }
 		
              function addItemThenTrack() {
-                //_etmc.push(["setOrgId", "100025152"]); // demo
-                _etmc.push(["setOrgId", "500008576"]); // test
+                _etmc.push(["setOrgId", "100025152"]); // demo
+                //_etmc.push(["setOrgId", "500008576"]); // test
 		var aURL = document.getElementById('aUrl').value;
 		console.log('tracking url ' + aURL);
 		_etmc.push(["updateItem", {
