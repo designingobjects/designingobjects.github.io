@@ -16,9 +16,10 @@
         <p><a href="https://designingobjects.github.io/track.html">track</a></p>
         
         <br/>
-        <button onclick="trackBase()">trackBase</button>
-        <button onclick="trackEmail()">trackEmail</button>
-        <button onclick="trackItem()">trackItem</button>
+        <button onclick="trackBase()">trackBase</button><br/>
+        <button onclick="trackEmail()">trackEmail</button><br/>
+        <button onclick="trackItem()">trackItem</button><br/>
+	<button onclick="addItemThenTrack()">addItemThenTrack</button><input id='aUrl' value='https://pwc.com/us/101'/><br/>
 
  
         <script type="text/javascript">
@@ -29,7 +30,7 @@
                 //_etmc.push(["setOrgId", "100025152"]); // demo
                 _etmc.push(["setOrgId", "500008576"]); // test
                 _etmc.push(["trackPageView"]);
-	        }
+	    }
             
             function trackEmail() {
                 //_etmc.push(["setOrgId", "100025152"]); // demo
@@ -37,7 +38,7 @@
                 //_etmc.push(["setUserInfo", {"email": "0031K00002dIOe7QAG"}]); // demo
 		_etmc.push(["setUserInfo", {"email": "00Q7E00000DEPc1UAH"}]); // test    
                 _etmc.push(["trackPageView"]);
-	        }
+	    }
             
             function trackItem() {
                 //_etmc.push(["setOrgId", "100025152"]); // demo
@@ -45,7 +46,23 @@
                 var thisURL = window.location.origin + window.location.pathname;
 		thisURL = thisURL.slice(0, -1);    
                 _etmc.push(["trackPageView", {"item" : thisURL}]);
-	        }
+	    }
+		
+             function addItemThenTrack() {
+                //_etmc.push(["setOrgId", "100025152"]); // demo
+                _etmc.push(["setOrgId", "500008576"]); // test
+		var aURL = document.getElementById('aUrl').value;
+		console.log('tracking url ' + aURL);
+		_etmc.push(["updateItem", {
+			"item"  : aURL,  
+			"url"   : aURL,
+			"available": "Y",
+			"item_type": "content",
+			"name"  : aURL
+		}]);
+		_etmc.push(["trackPageView", {"item" : thisURL}]);
+	    }
+
 		
 
         </script>
