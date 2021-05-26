@@ -7,22 +7,27 @@
         <br/><br/><br/><br/><br/>
         <h1>Marketing Cloud - Collect Tracking Code - 100025152 --- 1</h1>
         
-        <br/><br/>
+        <br/><hr/><br/>
         
-        <br/>
         <button onclick="trackBase()">trackBase</button>
 	    
-	<br/><br/>
+	<br/><hr/><br/>
        
 	User Info: <input type="text" id='userInfo'/>
 	<br/>
 	<button onclick="trackUserInfo(document.getElementById('userInfo').value)">track userinfo</button>
 	<button onclick="trackUserInfoAndCleanURL(document.getElementById('userInfo').value)">track userinfo + clean url</button>
         <button onclick="trackUserInfoAndCleanItemURL(document.getElementById('userInfo').value)">track userinfo + item (url)</button>
-	<br/><br/>
+	
+	<br/><hr/><br/>
 	    
 	<button onclick="trackBaseCleanThisURL()">trackItem</button>
 
+	<br/><hr/><br/>
+	    
+	URL: <input type="text" id='aURL' value='https://pwc.com/101'/>
+	<br/>
+	<button onclick="addThenTrack(document.getElementById('aURL').value)">add page then track (deprecated as of 2021)</button>
 	    
 	<script>
 
@@ -62,6 +67,21 @@
 	            _etmc.push(["setUserInfo", {"email": userInfo}]);
 		    var thisURL = window.location.origin + window.location.pathname;
 		    thisURL = thisURL.replace(/\/$/, ""); 
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		}
+		
+		function addThenTrack(aURL) {
+		    _etmc.push(["setOrgId", "100025152"]);
+		    var thisURL = aURL;
+		    thisURL = thisURL.replace(/\/$/, "");
+		    _etmc.push(["updateItem", {
+			"item"  : thisURL,  
+			"url"   : thisURL,
+			"available": "Y",
+			"item_type": "content",
+			"name"  : thisURL
+		    }]);
                     console.log('track url: '+thisURL);
 		    _etmc.push(["trackPageView", {"item" : thisURL}]);
 		}
