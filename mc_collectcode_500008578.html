@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <script type="text/javascript" src="//500008578.collect.igodigital.com/collect.js"></script>
+    </head>
+
+    <body>
+        <br/><br/><br/><br/><br/>
+        <h1>Marketing Cloud - Collect Tracking Code - 500008578 --- 1</h1>
+        
+        <br/><hr/><br/>
+        
+        <button onclick="trackBase()">trackBase</button>
+	    
+	<br/><hr/><br/>
+       
+	User Info: <input type="text" id='userInfo'/>
+	<br/>
+	<button onclick="trackUserInfo(document.getElementById('userInfo').value)">track userinfo</button>
+	<button onclick="trackUserInfoAndCleanURL(document.getElementById('userInfo').value)">track userinfo + clean url</button>
+        <button onclick="trackUserInfoAndCleanItemURL(document.getElementById('userInfo').value)">track userinfo + item (url)</button>
+	
+	<br/><hr/><br/>
+	    
+	<button onclick="trackBaseCleanThisURL()">trackItem</button>
+
+	<br/><hr/><br/>
+	    
+	URL: <input type="text" id='aURL' value='https://pwc.com/101'/>
+	<br/>
+	<button onclick="addThenTrack(document.getElementById('aURL').value)">add page then track (deprecated as of 2021)</button>
+	    
+	<script>
+
+		function trackBase() {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    _etmc.push(["trackPageView"]);
+		}
+
+		function trackUserInfo(userInfo) {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    console.log('set userinfo: '+userInfo);
+		    _etmc.push(["setUserInfo", {"email": userInfo}]);
+		    _etmc.push(["trackPageView"]);
+		}
+
+		function trackBaseCleanThisURL() {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    var thisURL = window.location.origin + window.location.pathname;
+		    thisURL = thisURL.replace(/\/$/, "");  
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"url" : thisURL}]);
+		}
+		
+		function trackUserInfoAndCleanURL(userInfo) {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    console.log('set userinfo: '+userInfo);
+	            _etmc.push(["setUserInfo", {"email": userInfo}]);
+		    var thisURL = window.location.origin + window.location.pathname;
+		    thisURL = thisURL.replace(/\/$/, ""); 
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"url" : thisURL}]);
+		}
+		
+		function trackUserInfoAndCleanItemURL(userInfo) {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    console.log('set userinfo: '+userInfo);
+	            _etmc.push(["setUserInfo", {"email": userInfo}]);
+		    var thisURL = window.location.origin + window.location.pathname;
+		    thisURL = thisURL.replace(/\/$/, ""); 
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		}
+		
+		function addThenTrack(aURL) {
+		    _etmc.push(["setOrgId", "500008578"]);
+		    var thisURL = aURL;
+		    thisURL = thisURL.replace(/\/$/, "");
+		    _etmc.push(["updateItem", {
+			"item"  : thisURL,  
+			"url"   : thisURL,
+			"available": "Y",
+			"item_type": "content",
+			"name"  : thisURL
+		    }]);
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		}
+	</script>
+    </body>
+</html>
