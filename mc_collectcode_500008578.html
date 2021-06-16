@@ -24,10 +24,10 @@
 	<button onclick="trackBaseCleanThisURL()">trackItem</button>
 
 	<br/><hr/><br/>
-	    
+	User Info: <input type="text" id='userInfo2' value='john@pwc.com'/><br/>    
 	URL: <input type="text" id='aURL' value='https://pwc.com/101'/>
 	<br/>
-	<button onclick="addThenTrack(document.getElementById('aURL').value)">add page then track (deprecated as of 2021)</button>
+	<button onclick="trackUserInfoAndCleanURL(document.getElementById('userInfo2').value, document.getElementById('aURL').value)">track userinfo + URL</button>
 	    
 	<script>
 
@@ -61,14 +61,14 @@
 		    _etmc.push(["trackPageView", {"url" : thisURL}]);
 		}
 		
-		function trackUserInfoAndCleanItemURL(userInfo) {
+		function trackUserInfoAndCleanURL(userInfo, aURL) {
 		    _etmc.push(["setOrgId", "500008578"]);
 		    console.log('set userinfo: '+userInfo);
 	            _etmc.push(["setUserInfo", {"email": userInfo}]);
-		    var thisURL = window.location.origin + window.location.pathname;
-		    thisURL = thisURL.replace(/\/$/, ""); 
+		    var thisURL = aURL;
+		    thisURL = thisURL.replace(/\/$/, "");
                     console.log('track url: '+thisURL);
-		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		    _etmc.push(["trackPageView", {"url" : thisURL}]);
 		}
 		
 		function addThenTrack(aURL) {
