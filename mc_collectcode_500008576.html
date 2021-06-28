@@ -74,7 +74,7 @@
 		    var thisURL = aURL;
 		    thisURL = thisURL.replace(/\/$/, "");
                     console.log('track url: '+thisURL);
-		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		    _etmc.push(["trackPageView", {"url" : thisURL}]);
 		}
 		
 		function trackUserInfoAndCleanItemURL(userInfo, aURL) {
@@ -83,8 +83,8 @@
 	            _etmc.push(["setUserInfo", {"email": userInfo}]);
 		    var thisURL = aURL;
 		    thisURL = thisURL.replace(/\/$/, "");
-                    console.log('track url: '+thisURL);
-		    _etmc.push(["trackPageView", {"url" : thisURL}]);
+                    console.log('track item: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
 		}
 		
 		function addThenTrack(aURL) {
