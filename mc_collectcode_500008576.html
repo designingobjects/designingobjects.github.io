@@ -29,6 +29,12 @@
 	<br/>
 	<button onclick="trackUserInfoAndCleanURL(document.getElementById('userInfo2').value, document.getElementById('aURL').value)">track userinfo + URL</button>
 	    
+	<br/><hr/><br/>
+	User Info: <input type="text" id='userInfo3' value='john@pwc.com'/><br/>    
+	Item: <input type="text" id='aURL3' value='https://pwc.com/101'/>
+	<br/>
+	<button onclick="trackUserInfoAndCleanItemURL(document.getElementById('userInfo3').value, document.getElementById('aURL3').value)">track userinfo + URL</button>
+	    
 	<script>
 
 		function trackBase() {
@@ -62,6 +68,16 @@
 		}
 		
 		function trackUserInfoAndCleanURL(userInfo, aURL) {
+		    _etmc.push(["setOrgId", "500008576"]);
+		    console.log('set userinfo: '+userInfo);
+	            _etmc.push(["setUserInfo", {"email": userInfo}]);
+		    var thisURL = aURL;
+		    thisURL = thisURL.replace(/\/$/, "");
+                    console.log('track url: '+thisURL);
+		    _etmc.push(["trackPageView", {"item" : thisURL}]);
+		}
+		
+		function trackUserInfoAndCleanItemURL(userInfo, aURL) {
 		    _etmc.push(["setOrgId", "500008576"]);
 		    console.log('set userinfo: '+userInfo);
 	            _etmc.push(["setUserInfo", {"email": userInfo}]);
